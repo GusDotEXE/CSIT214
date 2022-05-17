@@ -1,6 +1,13 @@
 //TODO
-//LOGIN
-//book flights
-//manage flight reservations
-//seat selections
-//purchasing in-flight services 
+
+//LOGIN - Frederick
+//FAQ - Frederick
+
+//book flights - Angus
+//manage flight reservations - Angus
+//ticketing - Angus
+
+//seat selections - Ethan
+//purchasing in-flight services -Ethan
+
+
