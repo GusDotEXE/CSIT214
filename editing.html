@@ -1,18 +1,160 @@
-<!DOCTYPE html>
-<!-- allow for editing of seat and chosen booking -->
+<!-- manage bookings -->
 
 <html>
+	<head>
+		<title>Manage Booking</title>
+		
+		<style>
+			.header1 {
+				font-size: 30px;
+				color: red;
+			
+			}
+			.header2 {
+				font-size: 20px;
+				color: navy;
+			}
 
+			.dateSelection {
+				font-size: 15px
+			}
+		</style>
+			
+		<script>
+			var para;
+			var cabinClass;
+			var seat;
+			var date;
+			var time;
+			
+			function classChange(cabin) {
+				cabinClass = cabin;
+				
+				if(cabin == "Economy") {
+					document.getElementById("seatSelection").innerHTML = "<span class='header2'>Please select available seat:</span><br />"
+					+"<select id='seatNo' onChange='seatSelect(this.value)'>"
+					+"<option selected disabled></option>"
+					+"<option value='E1'>E1</option>"
+					+"<option value='E2'>E2</option>"
+					+"<option value='E3'>E3</option></select><br /><br />"
+					+"<button onClick='clearPage()'>Confirm</button>";
+				}
+				
+				if(cabin == "PEconomy") {
+					document.getElementById("seatSelection").innerHTML = "<span class='header2'>Please select available seat:</span><br />"
+					+"<select id='seatNo' onChange='seatSelect(this.value)'>"
+					+"<option selected disabled></option>"
+					+"<option value='PE1'>PE1</option>"
+					+"<option value='PE2'>PE2</option>"
+					+"<option value='PE3'>PE3</option></select><br /><br />"
+					+"<button onClick='clearPage()'>Confirm</button>";
+				}
+				
+				if(cabin == "Business") {
+					document.getElementById("seatSelection").innerHTML = "<span class='header2'>Please select available seat:</span><br />"
+					+"<select id='seatNo' onChange='seatSelect(this.value)'>"
+					+"<option selected disabled></option>"
+					+"<option value='B1'>B1</option>"
+					+"<option value='B2'>B2</option>"
+					+"<option value='B3'>B3</option></select><br /><br />"
+					+"<button onClick='clearPage()'>Confirm</button>";
+				}
+				
+				if(cabin == "First") {
+					document.getElementById("seatSelection").innerHTML = "<span class='header2'>Please select available seat:</span><br />"
+					+"<select id='seatNo' onChange='seatSelect(this.value)'>"
+					+"<option selected disabled></option>"
+					+"<option value='F1'>F1</option>"
+					+"<option value='F2'>F2</option>"
+					+"<option value='F3'>F3</option></select><br /><br />"
+					+"<button onClick='clearPage()'>Confirm</button>";
+				}
+				
+			}
+			
+			function seatSelect(setSeat){
+				seat = setSeat;
+			}
+			
+			function clearPage(){
+				para = document.getElementById("master").innerHTML;
+				var e = document.getElementById("timeSelector");
+				time = e.value;
+				date = document.getElementById("date").value;
+				document.getElementById("master").innerHTML = "<br /><br />"
+				+"You have selected "
+				+cabinClass
+				+" class, seat "
+				+seat
+				+"<br />"
+				+"Departing at "
+				+ time
+				+" On "
+				+ date
+				+".<br /><br />"
+				+"<button onClick='back()'>back</button>";
+			}
+			
+			function back(){
+				document.getElementById("master").innerHTML = para;
+			}
 
+			function dateSelected(){
+				document.getElementById("timeSelection").innerHTML = 
+					"<span class='header1'>Departure Time:</span><br />"
+					+"<span class='header2'>Please Select Departure Time</span><br />"
+					+"<select id='timeSelector' onChange='showSelectSeat()'>"
+					+"<option selected disabled></option>"
+					+"<option value='7:04am'>7:04am</option>"
+					+"<option value='8:39am'>8:39am</option>"
+					+"<option value='11:30am'>11:30am</option>"
+					+"<option value='12:08pm'>12:08pm</option>"
+					+"<option value='2:43pm'>2:43pm</option>"
+					+"<option value='6:11pm'>6:11pm</option>"
+					+"<option value='9:23pm'>9:23pm</option></select><br /><br />";
+			}
 
-<head>
-    <script>  
+			function showSelectSeat(){
+				document.getElementById("p1").innerHTML =
+					"<span class='header1'>Seat Selection</span><br />"
+					+"<span class='header2'>Please select cabin class:</span><br />"
+					+"<select id='cabinClass' onChange='classChange(this.value)'>"
+						+"<option selected disabled></option>"
+						+"<option value='Economy'>Economy</option>"
+						+"<option value='PEconomy'>Premium Economy</option>"
+						+"<option value='Business'>Business</option>"
+						+"<option value='First'>First Class</option>"
+					+"</select><br /><br />"
+					+"<span id='seatSelection'></span>";
+			}
+			
+		</script>
+	</head>
+	
+	<body>
+		<header style="background-color:darkgrey; height:50px vmax; padding-top:1em; padding-left:1em; padding-right:0.5em">
+			<span style="font-size:3vmax; font-weight:bolder;">Fly dream air</span>
+			<span id="header" style="font-size:3vmax; float:right">Hello, {USERNAME}
+			<button onClick="notDone()" style="font-size:2vmax; font-weight:bolder; background-color:orange; border-color:orange">Log Out</button>
+			</span>
+		</header>
+	<div id="master">
+		<p id="flight">
+			<span class="header1">Change Time/Date of Flight</span>
+			<br />
+			<span class="header2">Select the Date of your flight</span>
+			<br /><br />
+			<input type="date" id="date" name="flightDate" class="dateSelection"
+				value="2022-05-26"
+				min="2022-05-26" max="2023-08-26" onchange="dateSelected()" />
+			<br /><br />
+			<span id="timeSelection"></span>
+		</p>
 
-    </script>
-</head>
+		<p id="p1">
+		</p>
+	</div>
 
-<body>
-
-      
-</body>
+	</body>
+	
 </html>
