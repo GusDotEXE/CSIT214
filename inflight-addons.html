@@ -1,1 +1,450 @@
+<html>
+<head>
+    <title>Purchases</title>
 
+    <style>
+        .header1 {
+            font-size: 30px;
+            color: red;
+        }
+
+        .header2 {
+            font-size: 20px;
+            color: navy;
+        }
+    </style>
+
+    <script>
+			var snack1 = 0;
+			var snack2 = 0;
+			var snack3 = 0;
+			var totalMeal = 0;
+			var totalSnack1 = 0;
+			var totalSnack2 = 0;
+			var totalSnack3 = 0;
+			var totalSnack = 0;
+			var totalDrink = 0;
+			var victualsTotal = 0;
+			var wifiPrice = 0;
+			var totalMovie = 0;
+			var totalShow = 0;
+			var totalMusic = 0;
+			var entertainmentTotal = 0;
+			var pillowPrice = 0;
+			var blanketPrice = 0;
+			var maskPrice = 0;
+			var plugsPrice = 0;
+			var amenitiesTotal = 0;
+			var para = "";
+
+
+			function mealCheck(meal){
+				// update the victual total based on selected meal
+				totalMeal = Number(meal);
+				calctotalVic();
+			}
+
+			function addsnack1(snack){
+				// increment snack 1 total
+				snack1++;
+
+				// update the number
+				var numberSpan = document.getElementById("snack1amount");
+				numberSpan.innerHTML = snack1;
+
+				// update total based on number of snack 1
+				totalSnack1 = snack*snack1;
+				calctotalSnack();
+			}
+
+			function subsnack1(snack){
+				if(snack1 == 0){
+				}
+				else{
+					// decrement snack 1 total
+					snack1--;
+
+					// update the number
+					var numberSpan = document.getElementById("snack1amount");
+					numberSpan.innerHTML = snack1;
+
+					// update total based on number of snack 1
+					totalSnack1 = snack*snack1;
+					calctotalSnack();
+				}
+			}
+			function addsnack2(snack){
+				// increment snack 2 total
+				snack2++;
+
+				// update the number
+				var numberSpan = document.getElementById("snack2amount");
+				numberSpan.innerHTML = snack2;
+
+				// update total based on number of snack 2
+				totalSnack2 = snack*snack2;
+				calctotalSnack();
+			}
+
+			function subsnack2(snack){
+				if(snack2 == 0){
+				}
+				else{
+					// decrement snack 2 total
+					snack2--;
+
+					// update the number
+					var numberSpan = document.getElementById("snack2amount");
+					numberSpan.innerHTML = snack2;
+
+					// update total based on number of snack 2
+					totalSnack2 = snack*snack2;
+					calctotalSnack();
+				}
+			}
+			function addsnack3(snack){
+				// increment snack 3 total
+				snack3++;
+
+				// update the number
+				var numberSpan = document.getElementById("snack3amount");
+				numberSpan.innerHTML = snack3;
+
+				// update total based on number of snack 3
+				totalSnack3 = snack*snack3;
+				calctotalSnack();
+			}
+
+			function subsnack3(snack){
+				if(snack3 == 0){
+				}
+				else{
+					// decrement snack 3 total
+					snack3--;
+
+					// update the number
+					var numberSpan = document.getElementById("snack3amount");
+					numberSpan.innerHTML = snack3;
+
+					// update total based on number of snack 3
+					totalSnack3 = snack*snack3;
+					calctotalSnack();
+				}
+			}
+
+			function drink1() {
+				// Gets the selected drink size
+				totalDrink = Number(document.getElementById("drink1").value);
+				// Only changes total if drink 1 is selected
+				if(document.getElementById("drink1check").checked) {
+					calctotalVic();
+				}
+			}
+
+			function drink2() {
+				// Gets the selected drink size
+				totalDrink = Number(document.getElementById("drink2").value);
+				// Only changes total if drink 1 is selected
+				if(document.getElementById("drink2check").checked) {
+					calctotalVic();
+				}
+			}
+
+			function calctotalSnack(){
+				// Calcualte the victual total of all selected snacks
+				totalSnack = totalSnack1+totalSnack2+totalSnack3;
+				calctotalVic();
+			}
+
+			function calctotalVic(){
+				// Calculate total of victual order
+				victualsTotal = totalMeal+totalSnack+totalDrink;
+				document.getElementById("total").value="$"+victualsTotal;
+			}
+
+			function wifiCheck(answer){
+				// update the entertainment total based on if wifi is selected
+				if(answer == "yes"){
+					wifiPrice = 10;
+				}
+				else{
+					wifiPrice = 0;
+				}
+				calctotalEnt();
+			}
+
+			function movies(){
+				// update the entertainment total based on selected movies
+				if(document.getElementById("movie1").checked && document.getElementById("movie2").checked){
+					totalMovie = Number(document.getElementById("movie1").value)+Number(document.getElementById("movie2").value);
+				}
+				else if(document.getElementById("movie1").checked){
+					totalMovie = Number(document.getElementById("movie1").value);
+				}
+				else if(document.getElementById("movie2").checked){
+					totalMovie = Number(document.getElementById("movie2").value);
+				}
+				else{
+					totalMovie = 0;
+				}
+				calctotalEnt();
+			}
+
+			function shows(){
+				// update the entertainment total based on selected shows
+				if(document.getElementById("show1").checked && document.getElementById("show2").checked){
+					totalShow = Number(document.getElementById("show1").value)+Number(document.getElementById("show2").value);
+				}
+				else if(document.getElementById("show1").checked){
+					totalShow = Number(document.getElementById("show1").value);
+				}
+				else if(document.getElementById("show2").checked){
+					totalShow = Number(document.getElementById("show2").value);
+				}
+				else{
+					totalShow = 0;
+				}
+				calctotalEnt();
+			}
+
+			function musics(){
+				// update the entertainment total based on selected musics
+				if(document.getElementById("music1").checked && document.getElementById("music2").checked){
+					totalMusic = Number(document.getElementById("music1").value)+Number(document.getElementById("music2").value);
+				}
+				else if(document.getElementById("music1").checked){
+					totalMusic = Number(document.getElementById("music1").value);
+				}
+				else if(document.getElementById("music2").checked){
+					totalMusic = Number(document.getElementById("music2").value);
+				}
+				else{
+					totalMusic = 0;
+				}
+				calctotalEnt();
+			}
+
+			function calctotalEnt(){
+				// Calculate total of entertainment order
+				entertainmentTotal = wifiPrice+totalMovie+totalShow+totalMusic;
+				document.getElementById("total1").value="$"+entertainmentTotal;
+			}
+
+			function pillowCheck(answer){
+				// update the amenities total based on if pillow is selected
+				if(answer == "yes"){
+					pillowPrice = 8;
+				}
+				else{
+					pillowPrice = 0;
+				}
+				calctotalAmn();
+			}
+
+			function blanketCheck(answer){
+				// update the amenities total based on if blanket is selected
+				if(answer == "yes"){
+					blanketPrice = 10;
+				}
+				else{
+					blanketPrice = 0;
+				}
+				calctotalAmn();
+			}
+
+			function maskCheck(answer){
+				// update the amenities total based on if face mask is selected
+				if(answer == "yes"){
+					maskPrice = 6;
+				}
+				else{
+					maskPrice = 0;
+				}
+				calctotalAmn();
+			}
+
+			function plugCheck(answer){
+				// update the amenities total based on if ear plugs is selected
+				if(answer == "yes"){
+					plugsPrice = 12;
+				}
+				else{
+					plugsPrice = 0;
+				}
+				calctotalAmn();
+			}
+
+			function calctotalAmn(){
+				// Calculate total of amenities order
+				amenitiesTotal = pillowPrice+blanketPrice+maskPrice+plugsPrice;
+				document.getElementById("total2").value="$"+amenitiesTotal;
+			}
+
+			function clearPara(){
+				para = document.getElementById("p1").innerHTML;
+				document.getElementById("p1").innerHTML = "<button onClick='cancel()'>cancel</button>";
+			}
+
+			function cancel(){
+				snack1 = 0;
+				snack2 = 0;
+				snack3 = 0;
+				totalMeal = 0;
+				totalSnack1 = 0;
+				totalSnack2 = 0;
+				totalSnack3 = 0;
+				totalSnack = 0;
+				totalDrink = 0;
+				victualsTotal = 0;
+				wifiPrice = 0;
+				totalMovie = 0;
+				totalShow = 0;
+				totalMusic = 0;
+				entertainmentTotal = 0;
+				pillowPrice = 0;
+				blanketPrice = 0;
+				maskPrice = 0;
+				plugsPrice = 0;
+				amenitiesTotal = 0;
+				document.getElementById("p1").innerHTML = para;
+				document.getElementById("snack1amount").innerHTML = "0";
+				document.getElementById("snack2amount").innerHTML = "0";
+				document.getElementById("snack3amount").innerHTML = "0";
+			}
+    </script>
+</head>
+
+<body>
+    <p id="p1">
+        <span class="header1">Food:</span>
+        <br />
+        <span class="header2">Meals:</span>
+        <br />
+        meal 1: $15.90
+        <input type="radio" name="meal" onClick="mealCheck(this.value)" value=15.90>
+        <br />
+        meal 2: $10.70
+        <input type="radio" name="meal" onClick="mealCheck(this.value)" value=10.70>
+        <br />
+        <span class="header2">Snacks:</span>
+        <br />
+        snack1: $5.00
+        <button name="snack" value=5.00 onClick="subsnack1(this.value);">-</button>
+        <span id="snack1amount">0</span>
+        <button name="snack" value=5.00 onClick="addsnack1(this.value);">+</button>
+        <br />
+        snack2: $6.00
+        <button name="snack" value=6.00 onClick="subsnack2(this.value);">-</button>
+        <span id="snack2amount">0</span>
+        <button name="snack" value=6.00 onClick="addsnack2(this.value);">+</button>
+        <br />
+        snack3: $7.50
+        <button name="snack" value=7.50 onClick="subsnack3(this.value);">-</button>
+        <span id="snack3amount">0</span>
+        <button name="snack" value=7.50 onClick="addsnack3(this.value);">+</button>
+        <br />
+        <span class="header2">Drinks:</span>
+        <br />
+        drink1: $5:00
+        <select id="drink1" onChange="drink1()">
+            <option value="4.50">Small (-0.50)</option>
+            <option value="5.00" selected="selected">Medium</option>
+            <option value="5.50">Large (+0.50)</option>
+        </select>
+        <input type="radio" id="drink1check" name="drinkselect" onClick="drink1(drink1.value)">
+        <br />
+        drink2: $2:50
+        <select id="drink2" onChange="drink2()">
+            <option value="2.00">Small (-0.50)</option>
+            <option value="2.50" selected="selected">Medium</option>
+            <option value="3.00">Large (+0.50)</option>
+        </select>
+        <input type="radio" id="drink2check" name="drinkselect" onClick="drink2(drink2.value)">
+        <br />
+        <label for="total">Total:</label>
+        <input type="text" id="total" name="total" value="$0.00" size="5" readonly>
+        <br /><br />
+        <button onClick="clearPara()">Add to cart</button>
+        <br /><br />
+
+        <span class="header1">Entertainment:</span>
+        <br />
+        <span class="header2">Wifi (extra $10):</span>
+        <input type="radio" name="wifi" onClick="wifiCheck(this.value)" value="yes">
+        yes
+        <input type="radio" name="wifi" onClick="wifiCheck(this.value)" value="no">
+        no
+        <br />
+        <span class="header2">Movies:</span>
+        <br />
+        movie1:
+        <input type="checkbox" name="movie" id="movie1" value="10.00" onClick="movies()">
+        $10.00
+        <br />
+        movie2:
+        <input type="checkbox" name="movie" id="movie2" value="12.00" onClick="movies()">
+        $12.00
+        <br />
+        <span class="header2">Shows:</span>
+        <br />
+        show1:
+        <input type="checkbox" name="show" id="show1" value="7.00" onClick="shows()">
+        $7.00
+        <br />
+        show2:
+        <input type="checkbox" name="show" id="show2" value="8.50" onClick="shows()">
+        $8.50
+        <br />
+        <span class="header2">Music:</span>
+        <br />
+        music1:
+        <input type="checkbox" name="music" id="music1" value="3.00" onClick="musics()">
+        $3.00
+        <br />
+        music2:
+        <input type="checkbox" name="music" id="music2" value="3.20" onClick="musics()">
+        $3.20
+        <br />
+        <label for="total1">Total:</label>
+        <input type="text" id="total1" name="total1" value="$0.00" size="5" readonly>
+        <br /><br />
+        <button onClick="clearPara()">Add to cart</button>
+        <br /><br />
+
+        <span class="header1">Amenities:</span>
+        <br />
+        <span class="header2">Pillow (extra $8):</span>
+        <input type="radio" name="pillow" onClick="pillowCheck(this.value)" value="yes">
+        yes
+        <input type="radio" name="pillow" onClick="pillowCheck(this.value)" value="no">
+        no
+        <br />
+        <span class="header2">Blanket (extra $10):</span>
+        <input type="radio" name="blanket" onClick="blanketCheck(this.value)" value="yes">
+        yes
+        <input type="radio" name="blanket" onClick="blanketCheck(this.value)" value="no">
+        no
+        <br />
+        <span class="header2">Eye Mask (extra $6):</span>
+        <input type="radio" name="eyeMask" onClick="maskCheck(this.value)" value="yes">
+        yes
+        <input type="radio" name="eyeMask" onClick="maskCheck(this.value)" value="no">
+        no
+        <br />
+        <span class="header2">Ear Plugs (extra $12):</span>
+        <input type="radio" name="earPlugs" onClick="plugCheck(this.value)" value="yes">
+        yes
+        <input type="radio" name="earPlugs" onClick="plugCheck(this.value)" value="no">
+        no
+        <br />
+        <label for="total2">Total:</label>
+        <input type="text" id="total2" name="total2" value="$0.00" size="5" readonly>
+        <br /><br />
+        <button onClick="clearPara()">Add to cart</button>
+        <br /><br />
+        <button style="font-size:20px; background-color:orange" onClick="clearPara()">Checkout</button>
+    </p>
+
+</body>
+
+</html>
