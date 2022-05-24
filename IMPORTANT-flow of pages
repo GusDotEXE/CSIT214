@@ -1,0 +1,12 @@
+The pages do not link to one another dynamically at this point.
+
+homepage is the first thing that opens immediately
+
+on the top there is 3 button, register, login and manage booking
+they lead to register, login and editing html files respectively
+
+if not logged in already, login page is prompted before loading editing.html
+
+there is one additional button on homepage, the "lets go" which leads to bookings.html
+on bookings.html at the final confirmation, it will proceed to inflight-addons.html
+there the booking can be finalised and the user sent back to homepage
